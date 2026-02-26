@@ -9,7 +9,7 @@ function Menu() {
   const categories = [
     { id: 'all', label: 'All' },
     { id: 'coffee', label: 'Coffee' },
-    { id: 'milk-tea', label: 'Milk Tea' },
+    { id: 'pastries', label: 'Pastries' },
     { id: 'dairy', label: 'Dairy Products' }
   ]
 
@@ -48,35 +48,35 @@ function Menu() {
     },
     {
       id: 5,
-      name: 'Classic Milk Tea',
-      description: 'Traditional milk tea with premium black tea leaves',
+      name: 'Croissant',
+      description: 'Buttery, flaky French pastry',
       price: 110,
-      category: 'milk-tea',
-      image: 'https://images.unsplash.com/photo-1576671841441-5d4f5c8b9f8c?w=400&h=300&fit=crop'
+      category: 'pastries',
+      image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=300&fit=crop'
     },
     {
       id: 6,
-      name: 'Brown Sugar Milk Tea',
-      description: 'Creamy milk tea with sweet brown sugar syrup',
+      name: 'Blueberry Muffin',
+      description: 'Moist muffin loaded with fresh blueberries',
       price: 140,
-      category: 'milk-tea',
-      image: 'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&h=300&fit=crop'
+      category: 'pastries',
+      image: 'https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=400&h=300&fit=crop'
     },
     {
       id: 7,
-      name: 'Taro Milk Tea',
-      description: 'Smooth and sweet taro root blended with tea',
+      name: 'Cinnamon Roll',
+      description: 'Soft roll with cinnamon sugar and cream cheese frosting',
       price: 145,
-      category: 'milk-tea',
-      image: 'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=400&h=300&fit=crop'
+      category: 'pastries',
+      image: 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=400&h=300&fit=crop'
     },
     {
       id: 8,
-      name: 'Matcha Latte',
-      description: 'Japanese matcha powder with steamed milk',
+      name: 'Chocolate Danish',
+      description: 'Flaky pastry filled with rich chocolate',
       price: 170,
-      category: 'milk-tea',
-      image: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=400&h=300&fit=crop'
+      category: 'pastries',
+      image: 'https://images.unsplash.com/photo-1612203985729-70726954388c?w=400&h=300&fit=crop'
     },
     {
       id: 9,

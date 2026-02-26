@@ -311,6 +311,48 @@
   color: var(--primary-brown);
 }
 
+/* Confirmation Modal */
+.confirm-modal {
+  padding: 2rem;
+}
+
+.confirm-modal svg {
+  color: var(--primary-brown);
+  margin-bottom: 1rem;
+}
+
+.confirm-modal h2 {
+  margin-bottom: 0.75rem;
+}
+
+.confirm-modal p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.confirm-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.confirm-btn {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: var(--primary-brown);
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.confirm-btn:hover {
+  background-color: var(--dark-brown);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .cart-item {

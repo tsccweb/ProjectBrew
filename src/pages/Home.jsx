@@ -72,19 +72,19 @@ function Home() {
             <div className="featured-card">
               <div className="card-image">
                 <img 
-                  src="https://images.unsplash.com/photo-1576671841441-5d4f5c8b9f8c?w=400&h=300&fit=crop" 
-                  alt="Milk Tea" 
+                  src="yellow cake.jpg"
+                  alt="Pastries" 
                 />
               </div>
               <div className="card-content">
-                <h3>Milk Tea</h3>
-                <p>Silky smooth milk tea with authentic flavors and the perfect blend ratio.</p>
+                <h3>Pastries</h3>
+                <p>Deliciously flaky and buttery pastries made fresh daily with premium ingredients.</p>
               </div>
             </div>
             <div className="featured-card">
               <div className="card-image">
                 <img 
-                  src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop" 
+                  src="matu.jpg" 
                   alt="Dairy Products" 
                 />
               </div>

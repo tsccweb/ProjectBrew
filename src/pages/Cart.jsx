@@ -6,6 +6,8 @@ import './Cart.css'
 function Cart() {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart()
   const [showOrderType, setShowOrderType] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
+  const [selectedOrderType, setSelectedOrderType] = useState('')
 
   const generateOrderId = () => {
     const timestamp = Date.now().toString().slice(-6)
@@ -27,8 +29,14 @@ function Cart() {
     return orderText
   }
 
-  const handleCheckout = (orderType) => {
-    const orderText = generateOrderText(orderType)
+  const handleOrderTypeSelect = (orderType) => {
+    setSelectedOrderType(orderType)
+    setShowOrderType(false)
+    setShowConfirm(true)
+  }
+
+  const handleConfirmCheckout = () => {
+    const orderText = generateOrderText(selectedOrderType)
     const encodedMessage = encodeURIComponent(orderText)
     
     // Open Facebook Messenger with pre-filled message
@@ -36,7 +44,8 @@ function Cart() {
     
     // Clear cart after checkout
     clearCart()
-    setShowOrderType(false)
+    setShowConfirm(false)
+    setSelectedOrderType('')
   }
 
   if (cartItems.length === 0) {
@@ -69,7 +78,7 @@ function Cart() {
             <div className="order-type-buttons">
               <button 
                 className="order-type-btn dine-in"
-                onClick={() => handleCheckout('Dine-in')}
+                onClick={() => handleOrderTypeSelect('Dine-in')}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
@@ -80,7 +89,7 @@ function Cart() {
               </button>
               <button 
                 className="order-type-btn takeout"
-                onClick={() => handleCheckout('Takeout')}
+                onClick={() => handleOrderTypeSelect('Takeout')}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 2H8a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z"/>
@@ -96,6 +105,36 @@ function Cart() {
             >
               Cancel
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Confirmation Modal */}
+      {showConfirm && (
+        <div className="order-type-modal">
+          <div className="order-type-content confirm-modal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <h2>Proceed to Messenger?</h2>
+            <p>Your order will be sent to our Facebook Messenger. You'll be able to review and send your order.</p>
+            <div className="confirm-buttons">
+              <button 
+                className="confirm-btn"
+                onClick={handleConfirmCheckout}
+              >
+                Yes, Proceed
+              </button>
+              <button 
+                className="cancel-order-type"
+                onClick={() => {
+                  setShowConfirm(false)
+                  setSelectedOrderType('')
+                }}
+              >
+                Go Back
+              </button>
+            </div>
           </div>
         </div>
       )}
