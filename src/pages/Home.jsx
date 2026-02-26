@@ -72,13 +72,13 @@ function Home() {
             <div className="featured-card">
               <div className="card-image">
                 <img 
-                  src="yellow cake.jpg"
+                  src="yellow cake.jpg" 
                   alt="Pastries" 
                 />
               </div>
               <div className="card-content">
                 <h3>Pastries</h3>
-                <p>Deliciously flaky and buttery pastries made fresh daily with premium ingredients.</p>
+                <p>Freshly baked pastries with buttery flaky layers and delicious fillings.</p>
               </div>
             </div>
             <div className="featured-card">

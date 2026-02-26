@@ -297,6 +297,65 @@
   font-weight: 600;
 }
 
+/* Payment Mode Buttons */
+.order-type-btn.cash {
+  border-color: #27ae60;
+  color: #27ae60;
+}
+
+.order-type-btn.cash:hover {
+  background-color: #27ae60;
+  color: var(--white);
+}
+
+.order-type-btn.cash:hover svg {
+  stroke: var(--white);
+}
+
+.order-type-btn.cashless {
+  border-color: #3498db;
+  color: #3498db;
+}
+
+.order-type-btn.cashless:hover {
+  background-color: #3498db;
+  color: var(--white);
+}
+
+.order-type-btn.cashless:hover svg {
+  stroke: var(--white);
+}
+
+/* Cashless Options */
+.cashless-options {
+  display: flex;
+  gap: 1rem;
+}
+
+.order-type-btn.gcash {
+  border-color: #0057B7;
+  color: #0057B7;
+}
+
+.order-type-btn.gcash:hover {
+  background-color: #0057B7;
+  color: var(--white);
+}
+
+.order-type-btn.paymaya {
+  border-color: #6833CF;
+  color: #6833CF;
+}
+
+.order-type-btn.paymaya:hover {
+  background-color: #6833CF;
+  color: var(--white);
+}
+
+.order-type-btn img {
+  border-radius: 8px;
+}
+
 .cancel-order-type {
   padding: 0.5rem 1.5rem;
   background-color: transparent;

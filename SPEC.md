@@ -77,7 +77,7 @@
 
 #### Featured Section (Home)
 - 3 product cards in a row (responsive to single column on mobile)
-- Cards: Coffee, Milk Tea, Dairy Products
+- Cards: Coffee, Pastries, Dairy Products
 - Card design: White background, brown title, light brown accent
 - Hover: lift upward, shadow increase, image zoom
 

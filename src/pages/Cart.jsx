@@ -6,8 +6,12 @@ import './Cart.css'
 function Cart() {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart()
   const [showOrderType, setShowOrderType] = useState(false)
+  const [showPaymentMode, setShowPaymentMode] = useState(false)
+  const [showCashlessOptions, setShowCashlessOptions] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
   const [selectedOrderType, setSelectedOrderType] = useState('')
+  const [selectedPaymentMode, setSelectedPaymentMode] = useState('')
+  const [selectedCashlessOption, setSelectedCashlessOption] = useState('')
 
   const generateOrderId = () => {
     const timestamp = Date.now().toString().slice(-6)
@@ -15,10 +19,15 @@ function Cart() {
     return `PB-${timestamp}-${random}`
   }
 
-  const generateOrderText = (orderType) => {
+  const generateOrderText = (orderType, paymentMode, cashlessOption) => {
     const orderId = generateOrderId()
     let orderText = `Order ID: ${orderId}\n`
-    orderText += `Type: ${orderType}\n\n`
+    orderText += `Type: ${orderType}\n`
+    orderText += `Payment: ${paymentMode}`
+    if (cashlessOption) {
+      orderText += ` (${cashlessOption})`
+    }
+    orderText += `\n\n`
     orderText += "Orders:\n"
     
     cartItems.forEach((item, index) => {
@@ -32,11 +41,32 @@ function Cart() {
   const handleOrderTypeSelect = (orderType) => {
     setSelectedOrderType(orderType)
     setShowOrderType(false)
+    setShowPaymentMode(true)
+  }
+
+  const handlePaymentModeSelect = (mode) => {
+    setSelectedPaymentMode(mode)
+    if (mode === 'Cashless') {
+      setShowCashlessOptions(true)
+    } else {
+      setShowPaymentMode(false)
+      setShowConfirm(true)
+    }
+  }
+
+  const handleCashlessOptionSelect = (option) => {
+    setSelectedCashlessOption(option)
+    setShowCashlessOptions(false)
+    setShowPaymentMode(false)
     setShowConfirm(true)
   }
 
   const handleConfirmCheckout = () => {
-    const orderText = generateOrderText(selectedOrderType)
+    const paymentDisplay = selectedPaymentMode === 'Cash' 
+      ? 'Cash' 
+      : `${selectedPaymentMode} (${selectedCashlessOption})`
+    
+    const orderText = generateOrderText(selectedOrderType, paymentDisplay, '')
     const encodedMessage = encodeURIComponent(orderText)
     
     // Open Facebook Messenger with pre-filled message
@@ -46,6 +76,16 @@ function Cart() {
     clearCart()
     setShowConfirm(false)
     setSelectedOrderType('')
+    setSelectedPaymentMode('')
+    setSelectedCashlessOption('')
+  }
+
+  const resetPaymentFlow = () => {
+    setShowPaymentMode(false)
+    setShowCashlessOptions(false)
+    setShowConfirm(false)
+    setSelectedPaymentMode('')
+    setSelectedCashlessOption('')
   }
 
   if (cartItems.length === 0) {
@@ -104,6 +144,77 @@ function Cart() {
               onClick={() => setShowOrderType(false)}
             >
               Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Payment Mode Selection Modal */}
+      {showPaymentMode && !showCashlessOptions && (
+        <div className="order-type-modal">
+          <div className="order-type-content">
+            <h2>Select Payment Mode</h2>
+            <p>How would you like to pay?</p>
+            <div className="order-type-buttons">
+              <button 
+                className="order-type-btn cash"
+                onClick={() => handlePaymentModeSelect('Cash')}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="20" height="12" x="2" y="6" rx="2"/>
+                  <circle cx="12" cy="12" r="2"/>
+                  <path d="M6 12h.01M18 12h.01"/>
+                </svg>
+                <span>Cash</span>
+              </button>
+              <button 
+                className="order-type-btn cashless"
+                onClick={() => handlePaymentModeSelect('Cashless')}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="20" height="14" x="2" y="5" rx="2"/>
+                  <path d="M2 10h20"/>
+                </svg>
+                <span>Cashless</span>
+              </button>
+            </div>
+            <button 
+              className="cancel-order-type"
+              onClick={() => setShowPaymentMode(false)}
+            >
+              Go Back
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Cashless Options Modal */}
+      {showCashlessOptions && (
+        <div className="order-type-modal">
+          <div className="order-type-content">
+            <h2>Select Cashless Option</h2>
+            <p>Choose your payment app</p>
+            <div className="order-type-buttons cashless-options">
+              <button 
+                className="order-type-btn gcash"
+                onClick={() => handleCashlessOptionSelect('GCash')}
+              >
+                <img src="gcash.jpg" alt="GCash" width="40" height="40" />
+                <span>GCash</span>
+              </button>
+              <button 
+                className="order-type-btn paymaya"
+                onClick={() => handleCashlessOptionSelect('PayMaya')}
+              >
+                <img src="paymaya.jpg" alt="PayMaya" width="40" height="40" />
+                <span>PayMaya</span>
+              </button>
+            </div>
+            <button 
+              className="cancel-order-type"
+              onClick={() => setShowCashlessOptions(false)}
+            >
+              Go Back
             </button>
           </div>
         </div>
