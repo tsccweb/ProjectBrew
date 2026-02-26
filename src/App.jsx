@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
@@ -11,6 +12,7 @@ import { CartProvider } from './context/CartContext'
 function App() {
   return (
     <CartProvider>
+      <ScrollToTop />
       <div className="app">
         <Navbar />
         <main className="main-content">
