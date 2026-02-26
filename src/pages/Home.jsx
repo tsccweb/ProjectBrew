@@ -34,7 +34,7 @@ function Home() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1 className="hero-title">Project Brew</h1>
-          <p className="hero-subtitle">Coffee and Dairies Made with Passion</p>
+          <p className="hero-subtitle">Coffee and Pastries Made with Passion</p>
           <Link to="/menu" className="hero-button">
             Explore Menu
           </Link>
