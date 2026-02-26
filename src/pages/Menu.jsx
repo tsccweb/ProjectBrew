@@ -162,7 +162,7 @@ function Menu() {
                   <h3 className="menu-card-title">{product.name}</h3>
                   <p className="menu-card-description">{product.description}</p>
                   <div className="menu-card-footer">
-                    <span className="menu-card-price">₹{product.price}</span>
+<span className="menu-card-price">₱{product.price}</span>
                     <button 
                       className="menu-card-button"
                       onClick={() => handleAddToCart(product)}

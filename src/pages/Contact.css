@@ -118,6 +118,114 @@
   box-shadow: 0 6px 20px rgba(196, 164, 132, 0.4);
 }
 
+/* Status Message */
+.status-message {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
+  border: 1px solid #b8dcb1;
+  box-shadow: 0 4px 15px rgba(21, 87, 36, 0.15);
+}
+
+.status-message::before {
+  content: "✓";
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Google Rating */
+.google-rating-wrapper {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(92, 58, 33, 0.05) 0%, rgba(196, 164, 132, 0.1) 100%);
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid rgba(196, 164, 132, 0.3);
+}
+
+.google-rating-wrapper h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-brown);
+  margin-bottom: 0.75rem;
+}
+
+.rating-intro {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.rating-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.stars {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.stars svg {
+  color: #ffc107;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
+}
+
+.rating-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-brown);
+}
+
+.google-review-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, #4285f4 0%, #3367d6 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.35);
+}
+
+.google-review-button:hover {
+  background: linear-gradient(135deg, #3367d6 0%, #4285f4 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(66, 133, 244, 0.45);
+}
+
+.google-review-button svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* Contact Info */
 .contact-info-wrapper {
   padding: 2.5rem;
@@ -180,6 +288,120 @@
   font-weight: 300;
   color: #666;
   word-break: break-word;
+}
+
+/* Store Hours */
+.store-hours-item {
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.store-hours-item .info-icon {
+  display: none;
+}
+
+.store-hours-status {
+  margin-bottom: 0.5rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.open {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.status-badge.closed {
+  background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.store-hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(196, 164, 132, 0.2);
+}
+
+.hours-row:last-child {
+  border-bottom: none;
+}
+
+.hours-row .day {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--primary-brown);
+}
+
+.hours-row .hours {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #666;
+}
+
+.hours-row.closed-day .day,
+.hours-row.closed-day .hours {
+  color: #999;
+  font-style: italic;
+}
+
+/* Location Image */
+.location-image-wrapper {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(196, 164, 132, 0.1);
+  border-radius: 12px;
+}
+
+.location-image-wrapper h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-brown);
+  margin-bottom: 1rem;
+}
+
+.location-image-container {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(92, 58, 33, 0.15);
+}
+
+.location-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: var(--transition);
+}
+
+.location-image:hover {
+  transform: scale(1.02);
+}
+
+.location-directions {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  line-height: 1.6;
 }
 
 /* Tablet Responsive */
@@ -295,5 +517,67 @@
 
   .info-icon {
     margin: 0 auto;
+  }
+
+  /* Store Hours Mobile */
+  .store-hours-item {
+    align-items: center;
+  }
+
+  .hours-row {
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+  }
+
+  .hours-row .day {
+    font-size: 1rem;
+  }
+
+  .hours-row .hours {
+    font-size: 0.85rem;
+  }
+
+  /* Location Image Mobile */
+  .location-image-wrapper {
+    padding: 1rem;
+  }
+
+  .location-image-wrapper h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .location-directions {
+    font-size: 0.85rem;
+  }
+
+  /* Google Rating Mobile */
+  .google-rating-wrapper {
+    padding: 1.5rem;
+  }
+
+  .google-rating-wrapper h2 {
+    font-size: 1.25rem;
+  }
+
+  .rating-display {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stars svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .rating-value {
+    font-size: 1.25rem;
+  }
+
+  .google-review-button {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
   }
 }

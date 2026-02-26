@@ -4,7 +4,7 @@ import { useCart } from '../context/CartContext'
 import './Cart.css'
 
 function Cart() {
-  const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart()
+  const { cartItems, removeFromCart, updateQuantity, clearCart, cartTotal } = useCart()
   const [showOrderType, setShowOrderType] = useState(false)
   const [showPaymentMode, setShowPaymentMode] = useState(false)
   const [showCashlessOptions, setShowCashlessOptions] = useState(false)
@@ -264,6 +264,9 @@ function Cart() {
                 <p className="cart-item-description">{item.description}</p>
               </div>
               <div className="cart-item-actions">
+                <div className="cart-item-price">
+                  ₱{item.price * item.quantity}
+                </div>
                 <div className="quantity-controls">
                   <button 
                     onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -291,6 +294,10 @@ function Cart() {
         </div>
 
         <div className="cart-summary">
+          <div className="cart-total">
+            <span>Total:</span>
+            <span className="cart-total-amount">₱{cartTotal}</span>
+          </div>
           <button 
             className="checkout-btn" 
             onClick={() => setShowOrderType(true)}

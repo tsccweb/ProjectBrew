@@ -117,6 +117,12 @@
   gap: 0.75rem;
 }
 
+.cart-item-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-brown);
+}
+
 .quantity-controls {
   display: flex;
   align-items: center;
@@ -173,6 +179,27 @@
   padding: 2rem;
   max-width: 400px;
   margin-left: auto;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-brown);
+}
+
+.cart-total span:first-child {
+  font-size: 1.25rem;
+  color: var(--primary-brown);
+  font-weight: 600;
+}
+
+.cart-total-amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-brown);
 }
 
 .checkout-btn {
