@@ -10,7 +10,8 @@ function Menu() {
     { id: 'all', label: 'All' },
     { id: 'coffee', label: 'Coffee' },
     { id: 'pastries', label: 'Pastries' },
-    { id: 'dairy', label: 'Dairy Products' }
+    { id: 'dairy', label: 'Dairy Products' },
+    { id: 'Best Seller', label: 'Best Seller' }
   ]
 
   const products = [
@@ -93,6 +94,14 @@ function Menu() {
       price: 100,
       category: 'dairy',
       image: 'freshmilk.jpg'
+    },
+    {
+      id: 11,
+      name: 'White Mocha',
+      description: 'Rich and creamy white mocha with vanilla and chocolate',
+      price: 150,
+      category: 'Best Seller',
+      image: 'whitemocha.jpg'
     },
 
   ]
