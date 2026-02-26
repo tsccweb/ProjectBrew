@@ -13,10 +13,9 @@ function About() {
       <section className="about-content">
         <div className="about-container">
           <div className="about-image">
-            <img 
-              src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=400&fit=crop" 
-              alt="Coffee Shop Interior" 
-            />
+            <video autoPlay loop playsInline>
+              <source src="/pbvid.mp4" type="video/mp4" />
+            </video>
           </div>
           <div className="about-text">
             <h2>Our Story</h2>

@@ -52,7 +52,7 @@ function Menu() {
       description: 'Buttery flaky croissant, perfectly baked golden brown',
       price: 80,
       category: 'pastries',
-      image: 'https://images.unsplash.com/photo-1555507036-ab1f40388085?w=400&h=300&fit=crop'
+      image: 'croissant.jpg'
     },
     {
       id: 6,
@@ -60,7 +60,7 @@ function Menu() {
       description: 'Sweet and tender Danish pastry filled with cream cheese',
       price: 120,
       category: 'pastries',
-      image: 'https://images.unsplash.com/photo-1626803775151-61d7568fed56?w=400&h=300&fit=crop'
+      image: 'Danish.jpg'
     },
     {
       id: 7,
@@ -76,40 +76,25 @@ function Menu() {
       description: 'Warm cinnamon roll topped with creamy frosting',
       price: 170,
       category: 'pastries',
-      image: 'https://images.unsplash.com/photo-1517433670267-08eccd17e745?w=400&h=300&fit=crop'
+      image: 'CinnamonRoll.jpg'
     },
     {
       id: 9,
-      name: 'Fresh Milk',
+      name: 'Matu Chocolate Fresh Milk',
       description: 'Farm-fresh pure milk, locally sourced',
-      price: 80,
+      price: 120,
       category: 'dairy',
-      image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop'
+      image: 'Chocomilk.jpg'
     },
     {
       id: 10,
-      name: 'Yogurt Drink',
+      name: 'Fresh Milk',
       description: 'Probiotic yogurt drink for gut health',
       price: 100,
       category: 'dairy',
-      image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop'
+      image: 'freshmilk.jpg'
     },
-    {
-      id: 11,
-      name: 'Cheese Foam',
-      description: 'Creamy cheese foam topping for drinks',
-      price: 50,
-      category: 'dairy',
-      image: 'https://images.unsplash.com/photo-1626957341926-98752fc2ba90?w=400&h=300&fit=crop'
-    },
-    {
-      id: 12,
-      name: 'Milkshake',
-      description: 'Thick and creamy milkshake with real fruits',
-      price: 180,
-      category: 'dairy',
-      image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&h=300&fit=crop'
-    }
+
   ]
 
   const filteredProducts = activeCategory === 'all' 
