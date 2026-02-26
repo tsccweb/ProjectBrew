@@ -119,6 +119,33 @@
   width: 100%;
 }
 
+/* Cart Link */
+.cart-link {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cart-link::after {
+  display: none;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: var(--primary-brown);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 600;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .hamburger {

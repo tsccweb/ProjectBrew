@@ -1,0 +1,159 @@
+import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useCart } from '../context/CartContext'
+import './Cart.css'
+
+function Cart() {
+  const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart()
+  const [showOrderType, setShowOrderType] = useState(false)
+
+  const generateOrderId = () => {
+    const timestamp = Date.now().toString().slice(-6)
+    const random = Math.random().toString(36).substring(2, 5).toUpperCase()
+    return `PB-${timestamp}-${random}`
+  }
+
+  const generateOrderText = (orderType) => {
+    const orderId = generateOrderId()
+    let orderText = `Order ID: ${orderId}\n`
+    orderText += `Type: ${orderType}\n\n`
+    orderText += "Orders:\n"
+    
+    cartItems.forEach((item, index) => {
+      orderText += `${index + 1}. ${item.name} x${item.quantity}\n`
+    })
+    
+    orderText += `\nThank you for ordering at Project Brew!`
+    return orderText
+  }
+
+  const handleCheckout = (orderType) => {
+    const orderText = generateOrderText(orderType)
+    const encodedMessage = encodeURIComponent(orderText)
+    
+    // Open Facebook Messenger with pre-filled message
+    window.open(`https://m.me/ProjectBrewBXU?text=${encodedMessage}`, '_blank')
+    
+    // Clear cart after checkout
+    clearCart()
+    setShowOrderType(false)
+  }
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="cart empty-cart fade-in">
+        <div className="empty-cart-content">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <h2>Your cart is empty</h2>
+          <p>Looks like you haven't added any items yet.</p>
+          <Link to="/menu" className="continue-shopping-btn">
+            Browse Menu
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="cart fade-in">
+      {/* Order Type Selection Modal */}
+      {showOrderType && (
+        <div className="order-type-modal">
+          <div className="order-type-content">
+            <h2>Select Order Type</h2>
+            <p>How would you like to receive your order?</p>
+            <div className="order-type-buttons">
+              <button 
+                className="order-type-btn dine-in"
+                onClick={() => handleCheckout('Dine-in')}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+                  <path d="M7 2v20"/>
+                  <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+                </svg>
+                <span>Dine-in</span>
+              </button>
+              <button 
+                className="order-type-btn takeout"
+                onClick={() => handleCheckout('Takeout')}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 2H8a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z"/>
+                  <path d="M12 18v-6"/>
+                  <path d="M9 15h6"/>
+                </svg>
+                <span>Takeout</span>
+              </button>
+            </div>
+            <button 
+              className="cancel-order-type"
+              onClick={() => setShowOrderType(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div className="cart-container">
+        <h1 className="cart-title">Your Cart</h1>
+        
+        <div className="cart-items">
+          {cartItems.map(item => (
+            <div key={item.id} className="cart-item">
+              <div className="cart-item-image">
+                <img src={item.image} alt={item.name} />
+              </div>
+              <div className="cart-item-details">
+                <h3 className="cart-item-name">{item.name}</h3>
+                <p className="cart-item-description">{item.description}</p>
+              </div>
+              <div className="cart-item-actions">
+                <div className="quantity-controls">
+                  <button 
+                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    className="quantity-btn"
+                  >
+                    -
+                  </button>
+                  <span className="quantity-value">{item.quantity}</span>
+                  <button 
+                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    className="quantity-btn"
+                  >
+                    +
+                  </button>
+                </div>
+                <button 
+                  onClick={() => removeFromCart(item.id)}
+                  className="remove-btn"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="cart-summary">
+          <button 
+            className="checkout-btn" 
+            onClick={() => setShowOrderType(true)}
+          >
+            Proceed to Checkout
+          </button>
+          <button onClick={clearCart} className="clear-cart-btn">
+            Clear Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Cart

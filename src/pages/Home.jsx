@@ -35,7 +35,7 @@ function Home() {
         <div className="hero-content">
           <h1 className="hero-title">Project Brew</h1>
           <p className="hero-subtitle">Coffee and Dairies Made with Passion</p>
-          <Link to="/contact" className="hero-button">
+          <Link to="/menu" className="hero-button">
             Explore Menu
           </Link>
         </div>
